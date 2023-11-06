@@ -42,6 +42,12 @@ const MyTestFuncComponent = props => {
         }}
       />
 
+      <Button
+        title="No change"
+        onPress={() => {
+          setCounter(counter + 0);
+        }}
+      />
       <Text>{counter}</Text>
 
       <Button
