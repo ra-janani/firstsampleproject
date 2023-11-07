@@ -33,13 +33,6 @@ function App() {
   return (
     <View style={{flex: 1, margin: 40}}>
       <ScrollView>
-        <MyHOC>
-          <View>
-            <Text>
-              these are children nodes of MyHOC
-            </Text>
-          </View>
-        </MyHOC>
         <UserProfile userData={userObject} inputStyle={inputStyle}/>
       </ScrollView>
     </View>

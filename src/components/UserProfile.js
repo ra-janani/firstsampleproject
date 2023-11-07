@@ -1,10 +1,12 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import UserBasicInfo from './UserBasicInfo';
 import UserAddressInfo from './UserAddressInfo';
 import UserContactInfo from './UserContactInfo';
 
 const UserProfile = props => {
+
+  const [backgroundColor, setBackgroundColor]=useState('yellow');
   const {inputStyle, userData} = props;
   const {firstName, lastName, email, phone, street, city, country, postalCode} =
     userData;
@@ -15,6 +17,10 @@ const UserProfile = props => {
         inputStyle={inputStyle}
         firstName={firstName}
         lastName={lastName}
+        bgColor={backgroundColor}
+        colorChangeCB={(requestedColor)=>{
+          setBackgroundColor(requestedColor)
+        }}
       />
       <UserContactInfo inputStyle={inputStyle} email={email} phone={phone} />
       <UserAddressInfo
@@ -24,6 +30,11 @@ const UserProfile = props => {
         country={country}
         postalCode={postalCode}
       />
+      <TouchableOpacity onPress={()=>{
+        setBackgroundColor('red')
+      }}>
+<Text>Submit Button</Text>
+      </TouchableOpacity>
     </View>
   );
 };
