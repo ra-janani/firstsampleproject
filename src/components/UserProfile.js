@@ -4,16 +4,13 @@ import UserBasicInfo from './UserBasicInfo';
 import UserAddressInfo from './UserAddressInfo';
 import UserContactInfo from './UserContactInfo';
 
-const UserProfile = (props) => {
-
-const {inputStyle}=props;
-
+const UserProfile = props => {
   return (
     <View>
       <Text>UserProfile</Text>
-      <UserBasicInfo inputStyle={inputStyle}/>
-      <UserContactInfo inputStyle={inputStyle}/>
-      <UserAddressInfo inputStyle={inputStyle}/>
+      <UserBasicInfo {...props} />
+      <UserContactInfo {...props} />
+      <UserAddressInfo {...props} />
     </View>
   );
 };
