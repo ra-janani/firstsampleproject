@@ -5,14 +5,29 @@ import UserAddressInfo from './UserAddressInfo';
 import UserContactInfo from './UserContactInfo';
 
 const UserProfile = props => {
+  const {inputStyle, userData} = props;
+  const {firstName, lastName, email, phone, street, city, country, postalCode} =
+    userData;
   return (
     <View>
       <Text>UserProfile</Text>
-      <UserBasicInfo {...props} />
-      <UserContactInfo {...props} />
-      <UserAddressInfo {...props} />
+      <UserBasicInfo
+        inputStyle={inputStyle}
+        firstName={firstName}
+        lastName={lastName}
+      />
+      <UserContactInfo inputStyle={inputStyle} email={email} phone={phone} />
+      <UserAddressInfo
+        inputStyle={inputStyle}
+        street={street}
+        city={city}
+        country={country}
+        postalCode={postalCode}
+      />
     </View>
   );
 };
 
 export default UserProfile;
+
+// // Here I am passing only the necessary props to all the child components

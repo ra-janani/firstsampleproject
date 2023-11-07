@@ -3,16 +3,16 @@ import {View, Text, TextInput} from 'react-native';
 
 const UserBasicInfo = (props) => {
 
-const {userData,inputStyle}=props;
+const {inputStyle}=props;
 
   return (
     <View>
       <Text>UserBasicInfo</Text>
-      <TextInput value={userData.firstName} onChangeText={()=>{}} placeholder='First Name' style={inputStyle}/>
-      <TextInput value={userData.lastName} onChangeText={()=>{}} placeholder='Last Name'style={inputStyle}/>
+      <TextInput value={props.firstName} onChangeText={()=>{}} placeholder='First Name' style={inputStyle}/>
+      <TextInput value={props.lastName} onChangeText={()=>{}} placeholder='Last Name'style={inputStyle}/>
     </View>
   );
 };
 
 export default UserBasicInfo;
-// here destructured 2 props userData and inputStyle from props.
+// Here I am getting only the necessary props that passed from the parent component which is UserProfile.js

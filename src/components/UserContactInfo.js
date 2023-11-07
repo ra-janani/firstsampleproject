@@ -2,21 +2,21 @@ import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 
 const UserContactInfo = props => {
-  const {userData} = props;
+  const {inputStyle} = props;
   return (
     <View>
       <Text>User Contact Info</Text>
       <TextInput
-        value={userData.email}
+        value={props.email}
         onChangeText={() => {}}
         placeholder="EMail"
-        style={props.inputStyle}
+        style={inputStyle}
       />
       <TextInput
-        value={userData.phone}
+        value={props.phone}
         onChangeText={() => {}}
         placeholder="Phone Number"
-        style={props.inputStyle}
+        style={inputStyle}
       />
     </View>
   );
@@ -24,4 +24,4 @@ const UserContactInfo = props => {
 
 export default UserContactInfo;
 
-// Here I destrucutured only the userData prop and not the inputstyle prop. so i am using props.inputstyle
+// Here I am getting only the necessary props that passed from the parent component which is UserProfile.js

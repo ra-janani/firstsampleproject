@@ -2,18 +2,18 @@ import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 
 const UserAddressInfo = (props) => {
-    const {userData,inputStyle}=props;
-    const {street,city,country,postalCode} = userData;
+    const {inputStyle}=props;
+    
   return(
     <View>
     <Text>User Address Info</Text>
-    <TextInput value={street} onChangeText={()=>{}} placeholder='Street' style={inputStyle}/>
-    <TextInput value={city} onChangeText={()=>{}} placeholder='City' style={inputStyle}/>
-    <TextInput value={country} onChangeText={()=>{}} placeholder='Country' style={inputStyle}/>
-    <TextInput value={postalCode} onChangeText={()=>{}} placeholder='Postal Code' style={inputStyle}/>
+    <TextInput value={props.street} onChangeText={()=>{}} placeholder='Street' style={inputStyle}/>
+    <TextInput value={props.city} onChangeText={()=>{}} placeholder='City' style={inputStyle}/>
+    <TextInput value={props.country} onChangeText={()=>{}} placeholder='Country' style={inputStyle}/>
+    <TextInput value={props.postalCode} onChangeText={()=>{}} placeholder='Postal Code' style={inputStyle}/>
   </View>
   );
  
 };
 export default UserAddressInfo;
-//here I further destructured the userData object
+// Here I am getting only the necessary props that passed from the parent component which is UserProfile.js
