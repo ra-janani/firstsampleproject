@@ -31,25 +31,26 @@ function App() {
     backgroundColor: 'pink',
     margin: 10,
     padding: 5,
-    
   };
 
   return (
-    <View style={{flex: 1, flexDirection:'row'}}>
-      <View style={{flex: 1, backgroundColor: 'red'}}>
-        <View style={{flex: 1, backgroundColor: 'pink', margin: 5}}></View>
-        <View style={{flex: 2, backgroundColor: 'yellow', margin: 5}}></View>
-        <View style={{flex: 3, backgroundColor: 'green', margin: 5}}></View>
-      </View>
-
-      <View style={{flex: 1, backgroundColor: 'red', flexDirection: 'row'}}>
-        <View style={{flex: 1, backgroundColor: 'pink', margin: 5}}></View>
-        <View style={{flex: 2, backgroundColor: 'yellow', margin: 5}}></View>
-        <View style={{flex: 3, backgroundColor: 'green', margin: 5}}></View>
-      </View>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'red',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        flexWrap: 'wrap',
+      }}>
+      <View style={{width: 100, height: 200, backgroundColor: 'pink'}}></View>
+      <View style={{width: 100, height: 200, backgroundColor: 'blue'}}></View>
+      <View style={{width: 100, height: 200, backgroundColor: 'green'}}></View>
+      <View style={{width: 100, height: 200, backgroundColor: 'purple'}}></View>
+      <View style={{width: 100, height: 200, backgroundColor: 'orange'}}></View>
 
     </View>
   );
-} 
+}
 
 export default App;
