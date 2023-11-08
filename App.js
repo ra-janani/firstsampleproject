@@ -7,7 +7,7 @@
 
 import React, {useState} from 'react';
 
-import {Text, View, ScrollView} from 'react-native';
+import {Text, View, Button,ScrollView, TouchableOpacity} from 'react-native';
 
 import {
   MyTestComponent,
@@ -39,16 +39,22 @@ function App() {
         flex: 1,
         backgroundColor: 'red',
         flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        flexWrap: 'wrap',
       }}>
-      <View style={{width: 100, height: 200, backgroundColor: 'pink'}}></View>
-      <View style={{width: 100, height: 200, backgroundColor: 'blue'}}></View>
-      <View style={{width: 100, height: 200, backgroundColor: 'green'}}></View>
-      <View style={{width: 100, height: 200, backgroundColor: 'purple'}}></View>
-      <View style={{width: 100, height: 200, backgroundColor: 'orange'}}></View>
-
+      <View style={{flex: 1, margin: 10, backgroundColor: 'pink', justifyContent:'center',alignItems:'center'}}>
+        <Text>First Box</Text>
+      </View>
+      <View style={{flex: 1, margin: 10, backgroundColor: 'lightblue',justifyContent:'center',alignItems:'center'}}>
+        <Text style={{position:'absolute', bottom:10}}>Second Box</Text>
+        <TouchableOpacity style={{ position:'absolute',bottom:10, right:10 }} >
+          <Text>Test Button</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{flex: 1, margin: 10, backgroundColor: 'lightgreen',justifyContent:'center',alignItems:'center'}}>
+        <Text>Third Box</Text>
+      </View>
+      <TouchableOpacity style={{ position:'absolute',bottom:10, right:10 }} >
+          <Text>For Outer view Button</Text>
+        </TouchableOpacity>
     </View>
   );
 }
