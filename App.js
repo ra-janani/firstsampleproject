@@ -7,7 +7,16 @@
 
 import React, {useState} from 'react';
 
-import {Text, View, Button,ScrollView, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  Button,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 
 import {
   MyTestComponent,
@@ -37,24 +46,49 @@ function App() {
     <View
       style={{
         flex: 1,
-        backgroundColor: 'red',
-        flexDirection: 'column',
       }}>
-      <View style={{flex: 1, margin: 10, backgroundColor: 'pink', justifyContent:'center',alignItems:'center'}}>
-        <Text>First Box</Text>
-      </View>
-      <View style={{flex: 1, margin: 10, backgroundColor: 'lightblue',justifyContent:'center',alignItems:'center'}}>
-        <Text style={{position:'absolute', bottom:10}}>Second Box</Text>
-        <TouchableOpacity style={{ position:'absolute',bottom:10, right:10 }} >
-          <Text>Test Button</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{flex: 1, margin: 10, backgroundColor: 'lightgreen',justifyContent:'center',alignItems:'center'}}>
-        <Text>Third Box</Text>
-      </View>
-      <TouchableOpacity style={{ position:'absolute',bottom:10, right:10 }} >
-          <Text>For Outer view Button</Text>
-        </TouchableOpacity>
+      <SafeAreaView>
+      
+        <FlatList
+          data={[
+            {
+              title: 'London',
+            },
+            {
+              title: 'Cardiff',
+            },
+            {
+              title: 'Delhi',
+            },
+            {
+              title: 'Chennai',
+            },
+          ]}
+          renderItem={({item}) => {
+            return (
+              <View
+                style={{
+                  height: 80,
+                  backgroundColor: 'yellow',
+                  marginVertical: 5,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                }}>
+                <Image
+                  style={{width: 40, height: 40}}
+                  source={{
+                    uri: 'https://media.macphun.com/img/uploads/customer/how-to/608/15542038745ca344e267fb80.28757312.jpg?q=85&w=1340',
+                  }}
+                />
+                <View style={{flex: 1, alignItems: 'center'}}>
+                  <Text>{item.title}</Text>
+                </View>
+              </View>
+            );
+          }}
+        />
+      </SafeAreaView>
     </View>
   );
 }
