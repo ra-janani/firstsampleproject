@@ -31,6 +31,7 @@ function App() {
     backgroundColor: 'pink',
     margin: 10,
     padding: 5,
+    
   };
 
   return (
