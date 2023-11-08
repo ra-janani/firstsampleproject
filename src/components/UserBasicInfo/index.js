@@ -31,6 +31,8 @@ const UserBasicInfo = props => {
         style={inputStyle}
         secureTextEntry></TextInput>
       {pass != vpass && <Text>Password doesnot match</Text>}
+     
+
 
       <TextInput
         value={vpass}
@@ -52,3 +54,4 @@ const UserBasicInfo = props => {
 
 export default UserBasicInfo;
 // Here I am getting only the necessary props that passed from the parent component which is UserProfile.js
+// {true && <Text>Password doesnot match</Text>}

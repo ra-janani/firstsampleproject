@@ -8,9 +8,8 @@
 import React, {useState} from 'react';
 
 import {Text, View, ScrollView} from 'react-native';
-import UserProfile from './src/components/UserProfile';
-import MyHOC from './src/components/MyHOC';
 
+import {MyTestComponent,MyTestFuncComponent,UserProfile} from './src/components';
 function App() {
   const userObject = {
     firstName: 'Janani',
@@ -33,6 +32,8 @@ function App() {
   return (
     <View style={{flex: 1, margin: 40}}>
       <ScrollView>
+        <MyTestComponent/>
+        <MyTestFuncComponent/>
         <UserProfile userData={userObject} inputStyle={inputStyle}/>
       </ScrollView>
     </View>

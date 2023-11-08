@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import UserBasicInfo from './UserBasicInfo';
-import UserAddressInfo from './UserAddressInfo';
-import UserContactInfo from './UserContactInfo';
+import UserBasicInfo from '../UserBasicInfo';
+import UserAddressInfo from '../UserAddressInfo';
+import UserContactInfo from '../UserContactInfo';
 
 const UserProfile = props => {
 
