@@ -3,9 +3,13 @@ import {View,Text,TouchableOpacity,Button} from 'react-native';
 
 
 const Settings = (props) => {
+    console.log("props are:::",props);
+    const {route}=props;
     return (
       <View>
         <Text>This is settings screen</Text>
+        <Text>This is from dashboard screen:::{route.params.city}</Text>
+        <Text>This is also from dashboard screen:::{route.params.country}</Text>
         <TouchableOpacity
           onPress={() => {
             props.navigation.push('Settings');
