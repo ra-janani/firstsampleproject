@@ -8,11 +8,19 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Text, View, FlatList, Image, SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  FlatList,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+  Button
+} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-const DashBoardScreen = () => {
+const DashBoardScreen = props => {
   return (
     <SafeAreaView
       style={{
@@ -57,6 +65,19 @@ const DashBoardScreen = () => {
           );
         }}
       />
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('Settings');
+        }}
+        style={{
+          height: 40,
+          marginHorizontal: 10,
+          backgroundColor: 'pink',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text>Go to settings</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -65,11 +86,37 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        
-        <Stack.Screen name="Settings" component={()=>{
-          return(<View><Text>This is settings screen</Text></View>);
-        }} />
-        <Stack.Screen name="DashBoard" component={DashBoardScreen} />
+        <Stack.Screen
+          name="DashBoard"
+          component={DashBoardScreen}
+          options={{title: 'OverView'}}
+        />
+
+        <Stack.Screen
+          name="Settings"
+          component={props => {
+            return (
+              <View>
+                <Text>This is settings screen</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.navigation.push('Settings');
+                  }}
+                  style={{height:40,
+                    marginHorizontal:10,
+                  backgroundColor:'pink',
+                justifyContent:'center',
+              alignItems:'center'}}><Text>Go to settings</Text></TouchableOpacity>
+              <Button title='Go to dashboard at once' onPress={()=>{
+                props.navigation.navigate('DashBoard')
+              }}/>
+              <Button title={'Go Back'} onPress={()=>{
+                props.navigation.goBack();
+              }}/>
+              </View>
+            );
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
