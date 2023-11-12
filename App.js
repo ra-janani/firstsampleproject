@@ -8,9 +8,10 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {DashBoardScreen, Settings} from './src/containers';
+import {DashBoardScreen, Settings, HookEffectScreen} from './src/containers';
 import {Text, View, Button} from 'react-native';
 import CarDetailsForm from './src/containers/CarDetailsForm';
+import CarDetailScreen from './src/containers';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,12 +26,12 @@ const HomeScreen = props => {
         }}
       />
 
-      <Button
+      {/* <Button
         title={'Go to CarDetailsForm'}
         onPress={() => {
           props.navigation.navigate('CarDetailsForm');
         }}
-      />
+      /> */}
     </View>
   );
 };
@@ -40,21 +41,26 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          name={'HookEffectScreen'}
+          component={HookEffectScreen}
+          title={'HookEffectScreen'}
+        />
+        <Stack.Screen
           name={'HomeScreen'}
           component={HomeScreen}
           title={'Home'}
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name={'CarDetailsForm'}
           component={CarDetailsForm}
           title={'CarDetailsForm'}
         />
         <Stack.Screen
-          name={'CarDetailsScreen'}
-          component={CarDetailsScreen}
-          title={'CarDetailsScreen'}
-        />
+          name={'CarDetailScreen'}
+          component={CarDetailScreen}
+          title={'CarDetailScreen'}
+        /> */}
 
         <Stack.Screen
           name="DashBoard"

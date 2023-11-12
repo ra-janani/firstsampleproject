@@ -12,15 +12,12 @@ import {
 
 const CarDetailsForm = () => {
   const navigation = useNavigation();
-  const [carName, setCarName] = useState(''); // Separate state for carName
-  const [carNum, setCarNum] = useState(''); // Separate state for carNum
-  const [carDetail, setCarDetail] = useState([]);
+  const [carName, setCarName] = useState('Honda'); // Separate state for carName
+  const [carNum, setCarNum] = useState('City'); // Separate state for carNum
+  const [carDetail, setCarDetail] = useState([carName,carNum]);
 
-  const handleItemClick = ({item}) => {
-    navigation.navigate('CarDetailsScreen', {
-      carName: item.carName,
-      carNum: item.carNum,
-    });
+  const handleItemClick = () => {
+    props.navigation.navigate('CarDetailScreen');
   };
 
   return (
@@ -67,7 +64,7 @@ const CarDetailsForm = () => {
           return (
             <TouchableOpacity
               onPress={() => {
-                handleItemClick(item);
+               navigation.navigate('CarDetailScreen');
               }}>
               <View
                 style={{
