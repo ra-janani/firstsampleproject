@@ -42,10 +42,19 @@ const Settings = props => {
         }}
       />
 
-<Button
+      <Button
         title={'Change the params from this screen'}
         onPress={() => {
-          props.navigation.setParams({city:'Trichy',country:'UK'});
+          props.navigation.setParams({city: 'Trichy', country: 'UK'});
+        }}
+      />
+      <Button
+        title={'Update params from inside the settings screen'}
+        onPress={() => {
+          props.navigation.setParams({
+            city: 'Banglore',
+            country: 'India',
+          });
         }}
       />
     </View>
