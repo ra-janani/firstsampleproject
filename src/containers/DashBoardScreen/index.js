@@ -7,10 +7,11 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
-  Button
+  Button,
 } from 'react-native';
 import {MyTestComponent} from '../../components';
 import Abc from '../SettingsScreen/abc';
+import CarDetailsForm from '../CarDetailsForm';
 
 const DashBoardScreen = props => {
   const [city, setCity] = useState('');
@@ -21,7 +22,8 @@ const DashBoardScreen = props => {
     },
     {
       title: 'cardiff',
-    },{
+    },
+    {
       title: 'Edinburgh',
     },
   ]);
@@ -44,17 +46,17 @@ const DashBoardScreen = props => {
         }}
         placeholder="Enter the City"
       />
-      <Button title={'Add city to the list'}
-      onPress={()=>{
-        setCityList([...cityList,{title:city}]);
-        setCity('');
-      }}
-
+      <Button
+        title={'Add city to the list'}
+        onPress={() => {
+          setCityList([...cityList, {title: city}]);
+          setCity('');
+        }}
       />
 
       <FlatList
-       // data={cityList.filter( item=> item.title)}
-       data={cityList}
+        // data={cityList.filter( item=> item.title)}
+        data={cityList}
         renderItem={({item}) => {
           return (
             <View
