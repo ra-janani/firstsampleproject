@@ -8,12 +8,8 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { DashBoardScreen,Settings } from './src/containers';
-import {
-  Text,
-  View,
-  Button,
-} from 'react-native';
+import {DashBoardScreen, Settings} from './src/containers';
+import {Text, View, Button} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,8 +27,6 @@ const HomeScreen = props => {
   );
 };
 
-
-
 function App() {
   return (
     <NavigationContainer>
@@ -45,10 +39,15 @@ function App() {
         <Stack.Screen
           name="DashBoard"
           component={DashBoardScreen}
-          options={{title: 'DashBoardScreen'}}
+          title={'DashBoardScreen'}
         />
 
-        <Stack.Screen name="Settings" component={Settings} title={'Settings'} />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          title={'Settings'}
+          initialParams={{city: 'CMBT', country: 'INDIA'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

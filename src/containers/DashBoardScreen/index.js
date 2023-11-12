@@ -25,7 +25,12 @@ const DashBoardScreen = props => {
         onChangeText={changedText => {
           setCity(changedText);
         }}
-        style={{backgroundColor: 'pink', height: 20,borderColor:'black',borderWidth:1}}
+        style={{
+          backgroundColor: 'pink',
+          height: 20,
+          borderColor: 'black',
+          borderWidth: 1,
+        }}
         placeholder="City"
       />
 
@@ -34,7 +39,12 @@ const DashBoardScreen = props => {
         onChangeText={changedText => {
           setCountry(changedText);
         }}
-        style={{backgroundColor: 'pink', height: 20,borderColor:'black',borderWidth:1}}
+        style={{
+          backgroundColor: 'pink',
+          height: 20,
+          borderColor: 'black',
+          borderWidth: 1,
+        }}
         placeholder="country"
       />
 
@@ -79,10 +89,7 @@ const DashBoardScreen = props => {
       />
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Settings', {
-            city: city,
-            country:country,
-          });
+          props.navigation.navigate('Settings', {city, country});
         }}
         style={{
           height: 40,
