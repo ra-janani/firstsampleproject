@@ -57,6 +57,15 @@ const Settings = props => {
           });
         }}
       />
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate({
+            name:'DashBoard',
+            params:{batch:4,topic:'passing params to back screen'},
+            merge:true});
+        }}>
+        <Text>Back to Home</Text>
+      </TouchableOpacity>
     </View>
   );
 };

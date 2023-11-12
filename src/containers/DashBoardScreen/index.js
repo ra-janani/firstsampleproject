@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import {
   SafeAreaView,
   View,
@@ -13,7 +13,13 @@ import {MyTestComponent} from '../../components';
 import Abc from '../SettingsScreen/abc';
 import CarDetailsForm from '../CarDetailsForm';
 
-const DashBoardScreen = props => {
+  const DashBoardScreen = props => {
+      useEffect(()=>{
+      console.log('=============');
+      console.log(props.route.params);
+      console.log('=============');
+
+    },[props.route.params]);
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [cityList, setCityList] = useState([

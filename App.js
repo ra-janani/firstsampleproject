@@ -37,9 +37,38 @@ const HomeScreen = props => {
 };
 
 function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
+  const [isUserLoggedIn,setIsUserLoggedIn]=useState(true);
+  const getAuthStack = () => {
+    return (
+      <Stack.Group>
+        <Stack.Screen
+          name="Login"
+          component={() => (
+            <View>
+              <Text>Login screen</Text>
+            </View>
+          )}
+        />
+        <Stack.Screen
+          name="Sign up"
+          component={() => (
+            <View>
+              <Text>SignUp screen</Text>
+            </View>
+          )}
+        />
+      </Stack.Group>
+    );
+  };
+
+  const getMainStack = () => {
+    return (
+      <Stack.Group>
+        <Stack.Screen
+          name="DashBoard"
+          component={DashBoardScreen}
+          title={'DashBoardScreen'}
+        />
         <Stack.Screen
           name={'HookEffectScreen'}
           component={HookEffectScreen}
@@ -51,30 +80,19 @@ function App() {
           title={'Home'}
         />
 
-        {/* <Stack.Screen
-          name={'CarDetailsForm'}
-          component={CarDetailsForm}
-          title={'CarDetailsForm'}
-        />
-        <Stack.Screen
-          name={'CarDetailScreen'}
-          component={CarDetailScreen}
-          title={'CarDetailScreen'}
-        /> */}
-
-        <Stack.Screen
-          name="DashBoard"
-          component={DashBoardScreen}
-          title={'DashBoardScreen'}
-        />
-
         <Stack.Screen
           name="Settings"
           component={Settings}
           title={'Settings'}
           initialParams={{city: 'CMBT', country: 'INDIA'}}
         />
-      </Stack.Navigator>
+      </Stack.Group>
+    );
+  };
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>{isUserLoggedIn?getMainStack():getAuthStack()}</Stack.Navigator>
     </NavigationContainer>
   );
 }
