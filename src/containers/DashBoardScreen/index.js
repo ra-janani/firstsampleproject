@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Button
 } from 'react-native';
 import {MyTestComponent} from '../../components';
 import Abc from '../SettingsScreen/abc';
@@ -14,6 +15,20 @@ import Abc from '../SettingsScreen/abc';
 const DashBoardScreen = props => {
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
+  const [cityList, setCityList] = useState([
+    {
+      title: 'London',
+    },
+    {
+      title: 'Cardiff',
+    },
+    {
+      title: 'Delhi',
+    },
+    {
+      title: 'Chennai',
+    },
+  ]);
 
   return (
     <SafeAreaView
@@ -27,47 +42,27 @@ const DashBoardScreen = props => {
         }}
         style={{
           backgroundColor: 'pink',
-          height: 20,
+          height: 40,
           borderColor: 'black',
           borderWidth: 1,
         }}
-        placeholder="City"
+        placeholder="Enter the City"
       />
+      <Button title={'Add city to the list'}
+      onPress={()=>{
+        setCityList([...cityList,{title:city}]);
+        setCity('');
+      }}
 
-      <TextInput
-        value={country}
-        onChangeText={changedText => {
-          setCountry(changedText);
-        }}
-        style={{
-          backgroundColor: 'pink',
-          height: 20,
-          borderColor: 'black',
-          borderWidth: 1,
-        }}
-        placeholder="country"
       />
 
       <FlatList
-        data={[
-          {
-            title: 'London',
-          },
-          {
-            title: 'Cardiff',
-          },
-          {
-            title: 'Delhi',
-          },
-          {
-            title: 'Chennai',
-          },
-        ]}
+        data={cityList}
         renderItem={({item}) => {
           return (
             <View
               style={{
-                height: 80,
+                height: 40,
                 backgroundColor: 'yellow',
                 marginVertical: 5,
                 justifyContent: 'center',
