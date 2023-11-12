@@ -20,13 +20,9 @@ const DashBoardScreen = props => {
       title: 'London',
     },
     {
-      title: 'Cardiff',
-    },
-    {
-      title: 'Delhi',
-    },
-    {
-      title: 'Chennai',
+      title: 'cardiff',
+    },{
+      title: 'Edinburgh',
     },
   ]);
 
@@ -57,7 +53,8 @@ const DashBoardScreen = props => {
       />
 
       <FlatList
-        data={cityList}
+       // data={cityList.filter( item=> item.title)}
+       data={cityList}
         renderItem={({item}) => {
           return (
             <View
