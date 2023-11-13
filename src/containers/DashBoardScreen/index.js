@@ -87,6 +87,11 @@ import CarDetailsForm from '../CarDetailsForm';
           );
         }}
       />
+      <TouchableOpacity onPress={()=>{
+        props.navigation.navigate('testClassComponent')
+      }}>
+        <Text>Go to class components screen</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           props.navigation.navigate('Settings', {city, country});

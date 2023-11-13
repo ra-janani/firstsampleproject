@@ -72,15 +72,16 @@ function App() {
     return (
       <Stack.Group>
         <Stack.Screen
-          name="testClassComponent"
-          component={TestClassComp}
-          title={'Class components'}
-        />
-        <Stack.Screen
           name="DashBoard"
           component={DashBoardScreen}
           title={'DashBoardScreen'}
         />
+        <Stack.Screen
+          name="testClassComponent"
+          component={TestClassComp}
+          title={'Class components'}
+        />
+
         <Stack.Screen
           name={'HookEffectScreen'}
           component={HookEffectScreen}

@@ -11,6 +11,10 @@ class TestClassComp extends React.Component {
       inputText2:''
     };
   }
+
+  componentWillUnmount(){
+    console.log('class component got unmounted');
+  }
   render() {
     const {inputText,inputText2}=this.state;
    // console.log('testclass component rendered');
