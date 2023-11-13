@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import LevelTwo from './LevelTwo';
 
-class LevelOne extends React.Component {
+class LevelOne extends React.PureComponent {
   constructor(props) {
     super(props);
     console.log('LevelOne constructor');
