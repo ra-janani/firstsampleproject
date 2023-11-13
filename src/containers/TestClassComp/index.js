@@ -12,7 +12,7 @@ class TestClassComp extends React.Component {
   }
   render() {
     const {inputText}=this.state;
-    console.log('testclass component rendered');
+   // console.log('testclass component rendered');
     return (
       <SafeAreaView style={{flex: 1}}>
         <TextInput

@@ -5,19 +5,19 @@ import LevelThree from './LevelThree';
 class LevelTwo extends React.Component {
     constructor(props) {
         super(props);
-        console.log('LevelTwo constructor');
+        //console.log('LevelTwo constructor');
       }
     
       componentDidMount(){
-        console.log('Level two component did mount');
+        //console.log('Level two component did mount');
       }
 
       componentDidUpdate(){
-        console.log('Level two component did update');
+        //console.log('Level two component did update');
       }
-      
+
   render() {
-    console.log('LevelTwo rendered');
+    //console.log('LevelTwo rendered');
     return (
       <View style={{flex:1, margin:10,backgroundColor:'yellow'}}>
         <LevelThree></LevelThree>
