@@ -8,10 +8,17 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {DashBoardScreen, Settings, HookEffectScreen} from './src/containers';
+import {
+  DashBoardScreen,
+  Settings,
+  HookEffectScreen,
+  Test,
+  TestClassComp,
+} from './src/containers';
 import {Text, View, Button} from 'react-native';
 import CarDetailsForm from './src/containers/CarDetailsForm';
 import CarDetailScreen from './src/containers';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +44,7 @@ const HomeScreen = props => {
 };
 
 function App() {
-  const [isUserLoggedIn,setIsUserLoggedIn]=useState(true);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
   const getAuthStack = () => {
     return (
       <Stack.Group>
@@ -91,9 +98,12 @@ function App() {
   };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>{isUserLoggedIn?getMainStack():getAuthStack()}</Stack.Navigator>
-    </NavigationContainer>
+ 
+      <TestClassComp />
+ 
+    // <NavigationContainer>
+    //   <Stack.Navigator>{isUserLoggedIn?getMainStack():getAuthStack()}</Stack.Navigator>
+    // </NavigationContainer>
   );
 }
 
