@@ -2,30 +2,43 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import LevelThree from './LevelThree';
 
-class LevelTwo extends React.Component {
-    constructor(props) {
-        super(props);
-        //console.log('LevelTwo constructor');
-      }
-    
-      componentDidMount(){
-        //console.log('Level two component did mount');
-      }
+// class LevelTwo extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     //console.log('LevelTwo constructor');
+//   }
 
-      componentDidUpdate(){
-        //console.log('Level two component did update');
-      }
+//   componentDidMount() {
+//     //console.log('Level two component did mount');
+//   }
 
-  render() {
-    //console.log('LevelTwo rendered');
-    return (
-      <View style={{flex:1, margin:10,backgroundColor:'yellow'}}>
-        <LevelThree></LevelThree>
-        <LevelThree></LevelThree>
-        <LevelThree></LevelThree>
-      </View>
-    );
-  }
-}
+//   componentDidUpdate() {
+//     //console.log('Level two component did update');
+//   }
+
+//   render() {
+//     //console.log('LevelTwo rendered');
+//     return (
+//       <View style={{flex: 1, margin: 10, backgroundColor: 'yellow'}}>
+//         <LevelThree></LevelThree>
+//         <LevelThree></LevelThree>
+//         <LevelThree></LevelThree>
+//       </View>
+//     );
+//   }
+// }
+
+// export default LevelTwo;
+
+const LevelTwo = (props) => {
+    console.log('LevelTwo rendered');
+  return (
+    <View style={{flex: 1, margin: 10, backgroundColor: 'yellow'}}>
+      <LevelThree></LevelThree>
+      <LevelThree></LevelThree>
+      <LevelThree></LevelThree>
+    </View>
+  );
+};
 
 export default LevelTwo;

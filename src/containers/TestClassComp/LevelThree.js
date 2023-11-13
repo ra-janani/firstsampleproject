@@ -1,24 +1,33 @@
 import React from 'react';
 import {View} from 'react-native';
 
-class LevelThree extends React.Component {
-  constructor(props) {
-    super(props);
-    //console.log('LevelThree constructor');
-  }
+// class LevelThree extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     //console.log('LevelThree constructor');
+//   }
 
-  componentDidMount() {
-    //console.log('Level three component did mount');
-  }
+//   componentDidMount() {
+//     //console.log('Level three component did mount');
+//   }
 
-  componentDidUpdate() {
-   // console.log('Level three component did update');
-  }
-  render() {
-    //console.log('LevelThree rendered');
+//   componentDidUpdate() {
+//    // console.log('Level three component did update');
+//   }
+//   render() {
+//     //console.log('LevelThree rendered');
+//     return (
+//       <View style={{backgroundColor: 'green', flex: 1, margin: 10}}></View>
+//     );
+//   }
+// }
+// export default LevelThree;
+
+const LevelThree=(props)=>{
+    console.log('LevelThree rendered');
     return (
-      <View style={{backgroundColor: 'green', flex: 1, margin: 10}}></View>
-    );
-  }
+              <View style={{backgroundColor: 'green', flex: 1, margin: 10}}></View>
+            );
 }
+
 export default LevelThree;
