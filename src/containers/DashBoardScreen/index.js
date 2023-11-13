@@ -92,6 +92,13 @@ import CarDetailsForm from '../CarDetailsForm';
       }}>
         <Text>Go to class components screen</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>{
+        props.navigation.navigate('HookEffectScreen')
+      }}>
+        <Text>Go to Functional hook effect components screen</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => {
           props.navigation.navigate('Settings', {city, country});

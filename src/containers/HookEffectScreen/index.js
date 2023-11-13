@@ -8,6 +8,10 @@ const HookEffectScreen = () => {
 
   useEffect(() => {
     console.log('use effect is called');
+
+    return()=>{
+      console.log('this is called inside useEffect functional component')
+    }
   }, []);
 
   console.log('render ran');
