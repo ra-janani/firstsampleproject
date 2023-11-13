@@ -20,6 +20,7 @@ class LevelOne extends React.Component {
     if (prevProps.inputText !== this.props.inputText) {
       this.setState({someText: this.props.inputText});
     }
+    
   }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -27,7 +28,7 @@ class LevelOne extends React.Component {
      // here we are comparing only one variable which avoids heavy comparision
 
       const decision =
-       !_.isEqual(nextProps, this.props) || !_.isEqual(nextState, this.state);
+       !_.isEqual(nextProps.inputText, this.props.inputText)|| !_.isEqual(nextProps.inputText2, this.props.inputText2);
 
       return decision;
     }

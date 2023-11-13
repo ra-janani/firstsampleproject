@@ -72,6 +72,11 @@ function App() {
     return (
       <Stack.Group>
         <Stack.Screen
+          name="testClassComponent"
+          component={TestClassComp}
+          title={'Class components'}
+        />
+        <Stack.Screen
           name="DashBoard"
           component={DashBoardScreen}
           title={'DashBoardScreen'}
@@ -98,12 +103,11 @@ function App() {
   };
 
   return (
- 
-      <TestClassComp />
- 
-    // <NavigationContainer>
-    //   <Stack.Navigator>{isUserLoggedIn?getMainStack():getAuthStack()}</Stack.Navigator>
-    // </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {isUserLoggedIn ? getMainStack() : getAuthStack()}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

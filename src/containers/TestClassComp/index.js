@@ -8,10 +8,11 @@ class TestClassComp extends React.Component {
 
     this.state = {
       inputText: '',
+      inputText2:''
     };
   }
   render() {
-    const {inputText}=this.state;
+    const {inputText,inputText2}=this.state;
    // console.log('testclass component rendered');
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -23,7 +24,15 @@ class TestClassComp extends React.Component {
             this.setState({inputText: changedText});
           }}
         />
-        <LevelOne inputText={inputText}></LevelOne>
+        <TextInput
+          style={{backgroundColor: 'pink', height: 40, margin: 10, padding: 5}}
+          value={this.state.inputText2}
+          placeholder="Type anything"
+          onChangeText={changedText => {
+            this.setState({inputText2: changedText});
+          }}
+        />
+        <LevelOne inputText={inputText} inputText2={inputText2}></LevelOne>
         <LevelOne></LevelOne>
       </SafeAreaView>
     );
