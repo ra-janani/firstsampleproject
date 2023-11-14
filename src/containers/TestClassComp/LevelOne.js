@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,memo} from 'react';
 import {View, Text} from 'react-native';
 import LevelTwo from './LevelTwo';
 import _ from 'lodash';
@@ -70,4 +70,6 @@ const LevelOne=(props)=>{
         );
 
 }
-export default LevelOne;
+export default memo(LevelOne,(prevProps,nextProps)=>{
+  return prevProps.inputText===nextProps.inputText;
+});
