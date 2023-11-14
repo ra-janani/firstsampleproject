@@ -1,6 +1,7 @@
-import {React, useCallback, useState,useMemo} from 'react';
-import {SafeAreaView, TextInput, View,Button,Text} from 'react-native';
+import {React, useCallback, useState, useMemo, useEffect} from 'react';
+import {SafeAreaView, TextInput, View, Button, Text} from 'react-native';
 import LevelOne from './LevelOne';
+import {PersistanceHelper} from '../../helpers';
 
 // class TestClassComp extends React.Component {
 //   constructor(props) {
@@ -45,21 +46,32 @@ import LevelOne from './LevelOne';
 // export default TestClassComp;
 
 const TestClassComp = props => {
-  const[count,setCount]=useState(0)
+  const [count, setCount] = useState(0);
   const [inputText, setInputText] = useState('');
   const [inputText2, setInputText2] = useState('');
   // const [myFunRef, setMyFunRef] = useState(() => {
   //   console.log('this is use state replacement for callback');
   // });
 
+  useEffect(() => {
+    PersistanceHelper.getValue(
+      'myFirstKey',
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      },
+    );
+  }, []);
   const myCustomCallBack = useCallback(() => {
     console.log('this is my callback');
   }, []);
 
-  const increment=()=>{
-    setCount(c=>c+1);
-  }
-  const myCalculation=useMemo(()=>expensiveCalculation(count),[count]); 
+  const increment = () => {
+    setCount(c => c + 1);
+  };
+  const myCalculation = useMemo(() => expensiveCalculation(count), [count]);
 
   console.log('testclass component rendered');
   return (
@@ -81,9 +93,12 @@ const TestClassComp = props => {
         }}
       />
 
-      <Button title="Increase Count" onPress={()=>{
-        increment();
-      }}/>
+      <Button
+        title="Increase Count"
+        onPress={() => {
+          increment();
+        }}
+      />
       <Text>{myCalculation}</Text>
       <LevelOne
         inputText={inputText}

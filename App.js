@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
@@ -16,6 +16,7 @@ import {
   TestClassComp,
 } from './src/containers';
 import {Text, View, Button} from 'react-native';
+import {PersistanceHelper} from "./src/helpers";
 import CarDetailsForm from './src/containers/CarDetailsForm';
 import CarDetailScreen from './src/containers';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -45,6 +46,9 @@ const HomeScreen = props => {
 
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
+  useEffect(()=>{
+    PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
+  },[]);
   const getAuthStack = () => {
     return (
       <Stack.Group>
