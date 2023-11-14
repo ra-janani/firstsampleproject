@@ -1,4 +1,4 @@
-import {React,useState} from 'react';
+import {React, useCallback, useState} from 'react';
 import {SafeAreaView, TextInput, View} from 'react-native';
 import LevelOne from './LevelOne';
 
@@ -44,10 +44,16 @@ import LevelOne from './LevelOne';
 // }
 // export default TestClassComp;
 
-const TestClassComp = (props) => {
+const TestClassComp = props => {
+  const [inputText, setInputText] = useState('');
+  const [inputText2, setInputText2] = useState('');
+  // const [myFunRef, setMyFunRef] = useState(() => {
+  //   console.log('this is use state replacement for callback');
+  // });
 
-    const[inputText,setInputText]=useState('');
-    const[inputText2,setInputText2]=useState('');
+  const myCustomCallBack = useCallback(() => {
+    console.log('this is my callback');
+  }, []);
 
   console.log('testclass component rendered');
   return (
@@ -57,7 +63,7 @@ const TestClassComp = (props) => {
         value={inputText}
         placeholder="Type anything"
         onChangeText={changedText => {
-            setInputText(changedText);
+          setInputText(changedText);
         }}
       />
       <TextInput
@@ -65,11 +71,12 @@ const TestClassComp = (props) => {
         value={inputText2}
         placeholder="Type anything"
         onChangeText={changedText => {
-            setInputText2(changedText);
+          setInputText2(changedText);
         }}
       />
-      <LevelOne inputText={inputText} inputText2={inputText2}></LevelOne>
-      <LevelOne></LevelOne>
+      <LevelOne
+        inputText={inputText}
+        someCallBack={myCustomCallBack}></LevelOne>
     </SafeAreaView>
   );
 };

@@ -1,5 +1,5 @@
 import {useState,useEffect,memo} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text,Button} from 'react-native';
 import LevelTwo from './LevelTwo';
 import _ from 'lodash';
 
@@ -65,11 +65,11 @@ const LevelOne=(props)=>{
           <View style={{flex: 1, margin: 10, backgroundColor: 'blue'}}>
             <Text style={{color: 'white'}}>{someText}</Text>
             <LevelTwo></LevelTwo>
-            
+            <Button title={'Testing callback click here'} onPress={()=>{
+              props.someCallBack()
+            }}/>
           </View>
         );
 
 }
-export default memo(LevelOne,(prevProps,nextProps)=>{
-  return prevProps.inputText===nextProps.inputText;
-});
+export default memo(LevelOne);
