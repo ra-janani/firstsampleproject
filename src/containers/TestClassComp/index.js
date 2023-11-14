@@ -53,16 +53,20 @@ const TestClassComp = props => {
   //   console.log('this is use state replacement for callback');
   // });
 
-  useEffect(() => {
-    PersistanceHelper.getValue(
-      'myFirstKey',
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      },
-    );
+  useEffect(async() => {
+
+const fetchedValue=await PersistanceHelper.getValue('myFirstKey');
+console.log("FetchedValue:::"+fetchedValue);
+
+    // PersistanceHelper.getValue(
+    //   'myFirstKey',
+    //   data => {
+    //     console.log(data);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   },
+    // );
   }, []);
   const myCustomCallBack = useCallback(() => {
     console.log('this is my callback');

@@ -10,17 +10,19 @@ class PersistanceHelper {
     }
   };
 
-  getValue = (key,success,failure) => {
+  getValue = async (key,success,failure) => {
     try {
-      const value = AsyncStorage.getItem(key)
-        .then(data => {
-          console.log(data);
-          success(data);
-        })
-        .catch(error => {
-            failure(error);
-          console.log(error);
-        });
+        const value= await AsyncStorage.getItem(key);
+        return value;
+    //   const value = AsyncStorage.getItem(key)
+    //     .then(data => {
+    //       console.log(data);
+    //       success(data);
+    //     })
+    //     .catch(error => {
+    //         failure(error);
+    //       console.log(error);
+    //     });
      //  return value;
     } catch (ex) {
       console.log(ex);
