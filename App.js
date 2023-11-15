@@ -47,7 +47,7 @@ const HomeScreen = props => {
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
   useEffect(()=>{
-    PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
+   PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
   },[]);
   const getAuthStack = () => {
     return (
