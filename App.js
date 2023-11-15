@@ -14,6 +14,7 @@ import {
   HookEffectScreen,
   Test,
   TestClassComp,
+  TestContext
 } from './src/containers';
 import {Text, View, Button} from 'react-native';
 import {PersistanceHelper} from "./src/helpers";
@@ -75,6 +76,11 @@ function App() {
   const getMainStack = () => {
     return (
       <Stack.Group>
+         <Stack.Screen
+          name={'TestContext'}
+          component={TestContext}
+          title={'TestContext'}
+        />
         <Stack.Screen
           name={'TestClassComp'}
           component={TestClassComp}
