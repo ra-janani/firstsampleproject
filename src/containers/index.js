@@ -3,10 +3,10 @@ import Settings from "./SettingsScreen";
 import HookEffectScreen from "./HookEffectScreen";
 import TestClassComp from "./TestClassComp";
 import TestContext from "./TestContext";
-
+import LoginScreen from "./LoginScreen";
 
 //import CarDetailScreen  from "./CarDetailPage";
 //import CarDetailsForm from "./CarDetailsForm";
 
 
-export {DashBoardScreen,Settings,HookEffectScreen,TestClassComp,TestContext};      
+export {DashBoardScreen,Settings,HookEffectScreen,TestClassComp,TestContext,LoginScreen};      

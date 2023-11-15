@@ -5,19 +5,21 @@
  * @format
  */
 
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {EventRegister} from 'react-native-event-listeners';
 import {
   DashBoardScreen,
   Settings,
   HookEffectScreen,
   Test,
   TestClassComp,
-  TestContext
+  TestContext,
+  LoginScreen,
 } from './src/containers';
 import {Text, View, Button} from 'react-native';
-import {PersistanceHelper} from "./src/helpers";
+import {PersistanceHelper} from './src/helpers';
 import CarDetailsForm from './src/containers/CarDetailsForm';
 import CarDetailScreen from './src/containers';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -46,21 +48,27 @@ const HomeScreen = props => {
 };
 
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
-  useEffect(()=>{
-   PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
-  },[]);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  useEffect(() => {
+    EventRegister.addEventListener('loginEvent', data => {
+      setIsUserLoggedIn(data);
+    });
+
+    //PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
+    PersistanceHelper.getObject('loginDetails')
+      .then(data => {
+        if (data.username && data.password) {
+          setIsUserLoggedIn(true);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
   const getAuthStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen
-          name="Login"
-          component={() => (
-            <View>
-              <Text>Login screen</Text>
-            </View>
-          )}
-        />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen
           name="Sign up"
           component={() => (
@@ -76,7 +84,12 @@ function App() {
   const getMainStack = () => {
     return (
       <Stack.Group>
-         <Stack.Screen
+        <Stack.Screen
+          name="DashBoard"
+          component={DashBoardScreen}
+          title={'DashBoardScreen'}
+        />
+        <Stack.Screen
           name={'TestContext'}
           component={TestContext}
           title={'TestContext'}
@@ -90,12 +103,6 @@ function App() {
           name={'HookEffectScreen'}
           component={HookEffectScreen}
           title={'HookEffectScreen'}
-        />
-
-        <Stack.Screen
-          name="DashBoard"
-          component={DashBoardScreen}
-          title={'DashBoardScreen'}
         />
 
         <Stack.Screen

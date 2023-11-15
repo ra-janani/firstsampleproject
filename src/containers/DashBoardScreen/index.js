@@ -1,4 +1,6 @@
 import {useState,useEffect} from 'react';
+import { EventRegister } from 'react-native-event-listeners';
+
 import {
   SafeAreaView,
   View,
@@ -9,6 +11,7 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+import {PersistanceHelper} from '../../helpers';
 import {MyTestComponent} from '../../components';
 import Abc from '../SettingsScreen/abc';
 import CarDetailsForm from '../CarDetailsForm';
@@ -87,6 +90,10 @@ import CarDetailsForm from '../CarDetailsForm';
           );
         }}
       />
+      <Button title={'Logout'} onPress={()=>{
+        PersistanceHelper.setObject('loginDetails',{});
+        EventRegister.emit('loginEvent',false);
+      }}/>
       <TouchableOpacity onPress={()=>{
         props.navigation.navigate('testClassComponent')
       }}>
