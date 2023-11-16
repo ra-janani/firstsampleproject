@@ -1,13 +1,12 @@
-import {useState, createContext,useContext,memo} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {useState, createContext, useContext, memo} from 'react';
+import {View, Text, TextInput, Button} from 'react-native';
 const userContext = createContext();
 
 const TestContext = () => {
   const [user, setUser] = useState('Jessie Hall');
   console.log('TextContext1');
   return (
-    
-    <userContext.Provider value={user}>
+    <userContext.Provider value={{getter: user, setter: setUser}}>
       <View style={{backgroundColor: 'red', margin: 5}}>
         <Text>Component 1 {user}</Text>
         <TextInput
@@ -35,7 +34,7 @@ const TestContext2 = () => {
       <TestContext3 />
     </View>
   );
-}
+};
 const TestContext3 = () => {
   console.log('TextContext3');
   return (
@@ -46,21 +45,45 @@ const TestContext3 = () => {
   );
 };
 const TestContext4 = () => {
+  const {getter, setter} = useContext(userContext);
   console.log('TextContext4');
   return (
     <View style={{backgroundColor: 'yellow', margin: 5}}>
       <Text>Component 4</Text>
+      <Text>{getter}</Text>
       <TestContext5 />
     </View>
   );
 };
 const TestContext5 = () => {
+  const {getter, setter} = useContext(userContext);
+
   console.log('TextContext5');
-  const user= useContext(userContext);  
+  const user = useContext(userContext);
   return (
     <View style={{backgroundColor: 'pink', margin: 5}}>
       <Text>Component 5</Text>
-      <Text>{user}</Text>
+      <Text>{getter}</Text>
+      {/* <TextInput
+        placeholder="Type name here"
+        style={{
+          backgroundColor: 'lightblue',
+          height: 50,
+          borderWidth: 2,
+          borderColor: 'black',
+          padding: 10,
+        }}
+        value={user}
+        onChangeText={ct => {
+          setter(ct);
+        }}
+      /> */}
+      <Button
+        title={'change the name'}
+        onPress={() => {
+          setter('Janani');
+        }}
+      />
     </View>
   );
 };

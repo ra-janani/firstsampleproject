@@ -68,6 +68,11 @@ function App() {
   const getAuthStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name={'TestContext'}
+          component={TestContext}
+          title={'TestContext'}
+        />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen
           name="Sign up"
@@ -85,15 +90,16 @@ function App() {
     return (
       <Stack.Group>
         <Stack.Screen
-          name="DashBoard"
-          component={DashBoardScreen}
-          title={'DashBoardScreen'}
-        />
-        <Stack.Screen
           name={'TestContext'}
           component={TestContext}
           title={'TestContext'}
         />
+        <Stack.Screen
+          name="DashBoard"
+          component={DashBoardScreen}
+          title={'DashBoardScreen'}
+        />
+
         <Stack.Screen
           name={'TestClassComp'}
           component={TestClassComp}
