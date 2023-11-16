@@ -1,15 +1,17 @@
 import {useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput,Button} from 'react-native';
 import TestContext2 from './TestContext2';
 import TestContext5 from './TestContext5';
 import {UserContextProvider} from '../../contexts/UserContext';
 
 const TestContext = () => {
   const [user, setUser] = useState('Jessie Hall');
+  const [isNofif,setIsNotif]=useState(false);
   console.log('TextContext1');
   return (
     <>
-      <UserContextProvider username={user} setUsername={setUser}>
+      <UserContextProvider username={user} setUsername={setUser} isNotificationEnabled={isNofif}
+  setIfNotifEnabled={setIsNotif}>
         <View style={{backgroundColor: 'red', margin: 5}}>
           <Text>Component 1 {user}</Text>
           <TextInput
@@ -24,10 +26,14 @@ const TestContext = () => {
               setUser(changedText);
             }}
           />
+          <Button title={"Notification button"} onPress={()=>{
+            setIsNotif(!isNofif);  
+          }}/>
+          <Text>{isNofif?"Enabled":"Disabled"}</Text>
           <TestContext2 />
         </View>
       </UserContextProvider>
-      <TestContext5 />
+      {/* <TestContext5 /> */}
     </>
   );
 };

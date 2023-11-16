@@ -7,8 +7,8 @@ const TestContext5 = ({}) => {
   //const user = '';//useContext(UserContext);
 
   const {
-    state: {username},
-    actions: {setUsername},
+    state: {username,isNotificationEnabled},
+    actions: {setUsername,setIfNotifEnabled},
   } = useUserContext();
 
   return (
@@ -18,9 +18,9 @@ const TestContext5 = ({}) => {
       <Button title={"Change name"} onPress={()=>{
         setUsername("santhosh");
       }}/>
+       <Text>{isNotificationEnabled?"Enabled":"Disabled"}</Text>
     </View>
   );
 };
 
 export default TestContext5;
-    
