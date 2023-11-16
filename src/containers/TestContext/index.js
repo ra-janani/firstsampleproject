@@ -9,7 +9,7 @@ const TestContext = () => {
   console.log('TextContext1');
   return (
     <>
-      <UserContextProvider username={user}>
+      <UserContextProvider username={user} setUsername={setUser}>
         <View style={{backgroundColor: 'red', margin: 5}}>
           <Text>Component 1 {user}</Text>
           <TextInput

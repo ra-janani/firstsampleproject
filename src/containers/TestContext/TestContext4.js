@@ -6,13 +6,13 @@ import {useUserContext} from '../../contexts/UserContext'
 const TestContext4 = () => {
   console.log('TextContext4');
   const {
-    state: {data},
-    actions: {setData},
+    state: {username},
+    actions: {setUsername},
   } = useUserContext();
   return (
     <View style={{backgroundColor: 'yellow', margin: 5}}>
       <Text>Component 4</Text>
-      <Text>{data}</Text>
+      <Text>{username}</Text>
       <TestContext5 />
     </View>
   );
