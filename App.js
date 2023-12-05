@@ -17,6 +17,7 @@ import {
   TestClassComp,
   TestContext,
   LoginScreen,
+  TestUseRef
 } from './src/containers';
 import {Text, View, Button} from 'react-native';
 import {PersistanceHelper} from './src/helpers';
@@ -90,9 +91,9 @@ function App() {
     return (
       <Stack.Group>
         <Stack.Screen
-          name={'TestContext'}
-          component={TestContext}
-          title={'TestContext'}
+          name={'TestUseRef'}
+          component={TestUseRef}
+          title={'Test UseRef'}
         />
         <Stack.Screen
           name="DashBoard"
