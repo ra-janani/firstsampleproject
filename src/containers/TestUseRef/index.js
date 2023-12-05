@@ -4,9 +4,16 @@ import {View, TextInput, Text, Button} from 'react-native';
 const TestUseRef = props => {
   const [textInput, setTextInput] = useState('');
   const [textInput2, setTextInput2] = useState('');
+  const[date,setDate]=useState(Date.now());
 
   const input1Ref = useRef(null);
   const input2Ref = useRef(null);
+
+  //let someVariable=0;
+
+  let someVariable=useRef(0);
+
+  console.log("Now it rerendered");
 
   return (
     <View>
@@ -40,6 +47,12 @@ const TestUseRef = props => {
           setTextInput2(ct);
         }}
       />
+
+      <Button title={"Increment"} onPress={()=>{
+        someVariable.current+=1;
+        console.log(someVariable.current);
+        setDate(Date.now());
+      }}/>
       <Button
         title={'Focus first textinput'}
         onPress={() => {
