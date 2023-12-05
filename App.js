@@ -17,7 +17,8 @@ import {
   TestClassComp,
   TestContext,
   LoginScreen,
-  TestUseRef
+  TestUseRef,
+  TestApiScreen,
 } from './src/containers';
 import {Text, View, Button} from 'react-native';
 import {PersistanceHelper} from './src/helpers';
@@ -90,6 +91,11 @@ function App() {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name={'testApiScreen'}
+          component={TestApiScreen}
+          title={'Test API'}
+        />
         <Stack.Screen
           name={'TestUseRef'}
           component={TestUseRef}
