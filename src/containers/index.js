@@ -6,6 +6,7 @@ import TestContext from './TestContext';
 import LoginScreen from './LoginScreen';
 import TestUseRef from './TestUseRef';
 import TestApiScreen from '../containers/TestApiScreen';
+import TestReduxScreen from './TestReduxScreen';
 
 //import CarDetailScreen  from "./CarDetailPage";
 //import CarDetailsForm from "./CarDetailsForm";
@@ -19,4 +20,5 @@ export {
   LoginScreen,
   TestUseRef,
   TestApiScreen,
+  TestReduxScreen
 };

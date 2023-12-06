@@ -19,6 +19,7 @@ import {
   LoginScreen,
   TestUseRef,
   TestApiScreen,
+  TestReduxScreen,
 } from './src/containers';
 import {Text, View, Button} from 'react-native';
 import {PersistanceHelper} from './src/helpers';
@@ -93,6 +94,11 @@ function App() {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name={'testReduxScreen'}
+          component={TestReduxScreen}
+          title={'Test Redux Screen'}
+        />
         <Stack.Screen
           name={'testApiScreen'}
           component={TestApiScreen}
