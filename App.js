@@ -25,6 +25,8 @@ import {PersistanceHelper} from './src/helpers';
 import CarDetailsForm from './src/containers/CarDetailsForm';
 import CarDetailScreen from './src/containers';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import store from './src/store';
+import {Provider} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
@@ -136,9 +138,11 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {isUserLoggedIn ? getMainStack() : getAuthStack()}
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator>
+          {isUserLoggedIn ? getMainStack() : getAuthStack()}
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }
