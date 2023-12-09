@@ -1,16 +1,18 @@
 import {useEffect, useState} from 'react';
 import {View, Text, FlatList, Button} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-} from '../../features/counter/counterSlice';
+import {kApiTodos} from '../../config/WebService';
+import ApiHelper from '../../helpers/ApiHelper';
+// import {useSelector, useDispatch} from 'react-redux';
+// import {
+//   increment,
+//   decrement,
+//   incrementByAmount,
+// } from '../../features/counter/counterSlice';
 
 const TestApiScreen = () => {
   const [data, setData] = useState([]);
-  const count = useSelector(state => state.counter.value); // subscription from component to the store
-  const dispatch = useDispatch();
+  // const count = useSelector(state => state.counter.value); // subscription from component to the store
+  // const dispatch = useDispatch();
 
   //   useEffect(async () => {
   //     const result = await fetch('https://jsonplaceholder.typicode.com/todos');
@@ -18,8 +20,8 @@ const TestApiScreen = () => {
   //   }, []);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then(x => x.json())
+    ApiHelper.get(kApiTodos)
+
       .then(response => {
         setData(response);
       })
@@ -30,7 +32,7 @@ const TestApiScreen = () => {
   return (
     <View>
       <Text>Test API</Text>
-      <Button
+      {/* <Button
         title={'Increment'}
         onPress={() => {
           dispatch(increment());
@@ -44,7 +46,7 @@ const TestApiScreen = () => {
           dispatch(decrement());
         }}
       />
-     
+      */}
       <FlatList
         data={data}
         renderItem={({item, index}) => {

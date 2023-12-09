@@ -20,7 +20,7 @@ import {
   TestApiScreen,
   TestReduxScreen,
   CartScreen,
-  TestReduxClass
+  TestReduxClass,
 } from '../containers';
 
 const Stack = createNativeStackNavigator();
@@ -91,6 +91,12 @@ const Navigator = () => {
     return (
       <Stack.Group>
         <Stack.Screen
+          name={'testApiScreen'}
+          component={TestApiScreen}
+          options={{title: 'Test API'}}
+          // title={'Test API'}
+        />
+        <Stack.Screen
           name={'testReduxScreenClass'}
           component={TestReduxClass}
           options={{
@@ -137,12 +143,7 @@ const Navigator = () => {
           }}
           // title={'Test cart using Redux'}
         />
-        <Stack.Screen
-          name={'testApiScreen'}
-          component={TestApiScreen}
-          options={{title: 'Test API'}}
-          // title={'Test API'}
-        />
+
         <Stack.Screen
           name={'TestUseRef'}
           component={TestUseRef}
