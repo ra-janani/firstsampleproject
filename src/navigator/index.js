@@ -1,10 +1,12 @@
-import {useState,useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {} from 'react-native';
 import {Text, View, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {EventRegister} from 'react-native-event-listeners';
 import {PersistanceHelper} from '../helpers';
+import {clearCart} from '../features/cart/cartSlice';
+import {useDispatch} from 'react-redux';
 
 import {
   DashBoardScreen,
@@ -17,7 +19,8 @@ import {
   TestUseRef,
   TestApiScreen,
   TestReduxScreen,
-  CartScreen
+  CartScreen,
+  TestReduxClass
 } from '../containers';
 
 const Stack = createNativeStackNavigator();
@@ -43,6 +46,7 @@ const HomeScreen = props => {
 };
 
 const Navigator = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     EventRegister.addEventListener('loginEvent', data => {
       setIsUserLoggedIn(data);
@@ -87,19 +91,50 @@ const Navigator = () => {
     return (
       <Stack.Group>
         <Stack.Screen
+          name={'testReduxScreenClass'}
+          component={TestReduxClass}
+          options={{
+            title: 'Test Redux Class component',
+            headerRight: () => (
+              <Button
+                title={'Cart'}
+                onPress={() => {
+                  navigation.navigate('cartScreen');
+                }}
+              />
+            ),
+          }}
+        />
+
+        <Stack.Screen
           name={'testReduxScreen'}
           component={TestReduxScreen}
           options={{
             title: 'Test Redux',
-            headerRight: () => <Button title={'Cart'} onPress={() => {
-              navigation.navigate('cartScreen');
-            }} />,
+            headerRight: () => (
+              <Button
+                title={'Cart'}
+                onPress={() => {
+                  navigation.navigate('cartScreen');
+                }}
+              />
+            ),
           }}
         />
         <Stack.Screen
           name={'cartScreen'}
           component={CartScreen}
-          options={{title: 'Test cart using Redux'}}
+          options={{
+            title: 'Test cart using Redux',
+            headerRight: () => (
+              <Button
+                title={'Clear Cart'}
+                onPress={() => {
+                  dispatch(clearCart());
+                }}
+              />
+            ),
+          }}
           // title={'Test cart using Redux'}
         />
         <Stack.Screen
