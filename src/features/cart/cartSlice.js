@@ -33,15 +33,22 @@ export const cartSlice = createSlice({
       if (itemPresentIndex !== -1) {
         const itemFoundObject = state.cartItems[itemPresentIndex];
 
-        if (itemFoundObject.quantity > 0) {
+        if (itemFoundObject.quantity > 1) {
           itemFoundObject.quantity -= 1;
         } else {
-          state.cartItems.pop({item: itemToRemove, quantity: 0});
+          state.cartItems.splice(itemPresentIndex, 1);
+          // state.cartItems.pop({item: itemToRemove, quantity: 0});
+
+          //eg for splice
+          //let myArray = [1, 2, 3, 4, 5];
+          // Remove two elements starting from index 1 and insert 'a' and 'b' in their place
+          //myArray.splice(1, 2, 'a', 'b');
+          //console.log(myArray); // Output: [1, 'a', 'b', 4, 5]
         }
       }
     },
     clearCart: state => {
-      state.cartItems=[];
+      state.cartItems = [];
     },
   },
 });

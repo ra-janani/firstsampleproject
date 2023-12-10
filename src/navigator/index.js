@@ -91,12 +91,6 @@ const Navigator = () => {
     return (
       <Stack.Group>
         <Stack.Screen
-          name={'testApiScreen'}
-          component={TestApiScreen}
-          options={{title: 'Test API'}}
-          // title={'Test API'}
-        />
-        <Stack.Screen
           name={'testReduxScreenClass'}
           component={TestReduxClass}
           options={{
@@ -110,6 +104,12 @@ const Navigator = () => {
               />
             ),
           }}
+        />
+        <Stack.Screen
+          name={'testApiScreen'}
+          component={TestApiScreen}
+          options={{title: 'Test API'}}
+          // title={'Test API'}
         />
 
         <Stack.Screen
