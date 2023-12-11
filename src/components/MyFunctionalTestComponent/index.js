@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
+import styles from './styles';
 
 const MyTestFuncComponent = props => {
   const {bgColor} = props;
@@ -20,12 +21,7 @@ const MyTestFuncComponent = props => {
         Hi Janani, this is functional component
       </Text>
       <Text
-        style={{
-          backgroundColor: 'yellow',
-          height: 40,
-          borderWidth: 1,
-          borderColor: 'black',
-        }}>
+        style={styles.textinput}>
         {score}
       </Text>
       <Button
