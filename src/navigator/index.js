@@ -6,7 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {EventRegister} from 'react-native-event-listeners';
 import {PersistanceHelper} from '../helpers';
 import {clearCart} from '../features/cart/cartSlice';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
 import {
   DashBoardScreen,
@@ -22,6 +22,7 @@ import {
   CartScreen,
   TestReduxClass,
 } from '../containers';
+import { logout } from '../features/user/userSlice';
 
 const Stack = createNativeStackNavigator();
 const HomeScreen = props => {
@@ -47,24 +48,43 @@ const HomeScreen = props => {
 
 const Navigator = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    EventRegister.addEventListener('loginEvent', data => {
-      setIsUserLoggedIn(data);
-    });
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-    //PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
+  useEffect(() => {
+    // Use the Redux state to update isUserLoggedIn
+    setIsUserLoggedIn(isAuthenticated);
+
+    // You can continue using your existing persistence logic if needed
+
     PersistanceHelper.getObject('loginDetails')
       .then(data => {
         if (data.username && data.password) {
-          setIsUserLoggedIn(true);
+          // Dispatch login action if user details are present
+          dispatch(login(data));
         }
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [dispatch, isAuthenticated]);
+  // useEffect(() => {
+  //   EventRegister.addEventListener('loginEvent', data => {
+  //     setIsUserLoggedIn(data);
+  //   });
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  //   //PersistanceHelper.setValue('myFirstKey','Hey!! is this value is stored?')
+  //   PersistanceHelper.getObject('loginDetails')
+  //     .then(data => {
+  //       if (data.username && data.password) {
+  //         setIsUserLoggedIn(true);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(isAuthenticated);
   const navigation = useNavigation();
   const getAuthStack = () => {
     return (
@@ -100,6 +120,15 @@ const Navigator = () => {
                 title={'Cart'}
                 onPress={() => {
                   navigation.navigate('cartScreen');
+                }}
+              />
+            ),
+            headerLeft: () => (
+              <Button
+                title={'LogOut'}
+                onPress={() => {
+                  // Handle custom back action here
+                  dispatch(logout());
                 }}
               />
             ),
