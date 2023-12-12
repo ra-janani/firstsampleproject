@@ -21,6 +21,7 @@ import {
   TestReduxScreen,
   CartScreen,
   TestReduxClass,
+  TypeScriptScreen
 } from '../containers';
 import {logout} from '../features/user/userSlice';
 
@@ -110,6 +111,12 @@ const Navigator = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name="TypescriptScreen"
+          component={TypeScriptScreen}
+          options={{title: 'TypescriptScreen'}}
+          // title={'DashBoardScreen'}
+        />
         <Stack.Screen
           name="DashBoard"
           component={DashBoardScreen}

@@ -25,6 +25,7 @@ const DashBoardScreen = props => {
   }, [props.route.params]);
 
   useEffect(() => {
+    PersistanceHelper.setValue('someKey','someValue');
     // Keychain.setInternetCredentials(
     //   'com.itc.securestorage',
     //   'myusername',

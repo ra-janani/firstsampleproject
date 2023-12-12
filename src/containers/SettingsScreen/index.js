@@ -1,16 +1,19 @@
 import {useEffect} from 'react';
 import {View, Text, TouchableOpacity, Button} from 'react-native';
 import * as Keychain from 'react-native-keychain';
+import {PersistanceHelper} from '../../helpers';
 
 const Settings = props => {
-  useEffect(() => {
-    Keychain.getInternetCredentials('com.itc.securestorage')
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  useEffect(async() => {
+    const fetchedval=await PersistanceHelper.getValue('someKey');
+    console.log(fetchedval);
+  //  Keychain.getInternetCredentials('com.itc.securestorage')
+  //     .then(data => {
+  //       console.log(data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
   }, []);
   console.log('props are:::', props);
   const {route} = props;

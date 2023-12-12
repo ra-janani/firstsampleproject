@@ -9,6 +9,7 @@ import TestApiScreen from '../containers/TestApiScreen';
 import TestReduxScreen from './TestReduxScreen';
 import CartScreen from './CartScreen';
 import TestReduxClass from './TestReduxClass';
+import TypeScriptScreen from './TypeScriptScreen';
 
 
 //import CarDetailScreen  from "./CarDetailPage";
@@ -26,5 +27,6 @@ export {
   TestReduxScreen,
   CartScreen,
   TestReduxClass,
+  TypeScriptScreen
 
 };
