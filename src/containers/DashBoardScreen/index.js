@@ -1,5 +1,6 @@
-import {useState,useEffect} from 'react';
-import { EventRegister } from 'react-native-event-listeners';
+import {useState, useEffect} from 'react';
+import {EventRegister} from 'react-native-event-listeners';
+import * as Keychain from 'react-native-keychain';
 
 import {
   SafeAreaView,
@@ -16,13 +17,27 @@ import {MyTestComponent} from '../../components';
 import Abc from '../SettingsScreen/abc';
 import CarDetailsForm from '../CarDetailsForm';
 
-  const DashBoardScreen = props => {
-      useEffect(()=>{
-      console.log('=============');
-      console.log(props.route.params);
-      console.log('=============');
+const DashBoardScreen = props => {
+  useEffect(() => {
+    console.log('=============');
+    console.log(props.route.params);
+    console.log('=============');
+  }, [props.route.params]);
 
-    },[props.route.params]);
+  useEffect(() => {
+    // Keychain.setInternetCredentials(
+    //   'com.itc.securestorage',
+    //   'myusername',
+    //   'mypassword123',
+    // )
+    //   .then(success => {
+    //     console.log(success);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+  }, []);
+
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [cityList, setCityList] = useState([
@@ -90,19 +105,24 @@ import CarDetailsForm from '../CarDetailsForm';
           );
         }}
       />
-      <Button title={'Logout'} onPress={()=>{
-        PersistanceHelper.setObject('loginDetails',{});
-        EventRegister.emit('loginEvent',false);
-      }}/>
-      <TouchableOpacity onPress={()=>{
-        props.navigation.navigate('testClassComponent')
-      }}>
+      <Button
+        title={'Logout'}
+        onPress={() => {
+          PersistanceHelper.setObject('loginDetails', {});
+          EventRegister.emit('loginEvent', false);
+        }}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('testClassComponent');
+        }}>
         <Text>Go to class components screen</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>{
-        props.navigation.navigate('HookEffectScreen')
-      }}>
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('HookEffectScreen');
+        }}>
         <Text>Go to Functional hook effect components screen</Text>
       </TouchableOpacity>
 

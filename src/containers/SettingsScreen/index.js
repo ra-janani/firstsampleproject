@@ -1,7 +1,17 @@
-import {} from 'react';
+import {useEffect} from 'react';
 import {View, Text, TouchableOpacity, Button} from 'react-native';
+import * as Keychain from 'react-native-keychain';
 
 const Settings = props => {
+  useEffect(() => {
+    Keychain.getInternetCredentials('com.itc.securestorage')
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
   console.log('props are:::', props);
   const {route} = props;
   return (
@@ -60,9 +70,10 @@ const Settings = props => {
       <TouchableOpacity
         onPress={() => {
           props.navigation.navigate({
-            name:'DashBoard',
-            params:{batch:4,topic:'passing params to back screen'},
-            merge:true});
+            name: 'DashBoard',
+            params: {batch: 4, topic: 'passing params to back screen'},
+            merge: true,
+          });
         }}>
         <Text>Back to Home</Text>
       </TouchableOpacity>

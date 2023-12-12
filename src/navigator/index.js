@@ -6,7 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {EventRegister} from 'react-native-event-listeners';
 import {PersistanceHelper} from '../helpers';
 import {clearCart} from '../features/cart/cartSlice';
-import {useDispatch,useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {
   DashBoardScreen,
@@ -22,7 +22,7 @@ import {
   CartScreen,
   TestReduxClass,
 } from '../containers';
-import { logout } from '../features/user/userSlice';
+import {logout} from '../features/user/userSlice';
 
 const Stack = createNativeStackNavigator();
 const HomeScreen = props => {
@@ -48,7 +48,7 @@ const HomeScreen = props => {
 
 const Navigator = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
   useEffect(() => {
     // Use the Redux state to update isUserLoggedIn
@@ -110,6 +110,12 @@ const Navigator = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen
+          name="DashBoard"
+          component={DashBoardScreen}
+          options={{title: 'DashBoardScreen'}}
+          // title={'DashBoardScreen'}
+        />
         <Stack.Screen
           name={'testReduxScreenClass'}
           component={TestReduxClass}
@@ -178,12 +184,6 @@ const Navigator = () => {
           component={TestUseRef}
           options={{title: 'Test UseRef'}}
           //title={'Test UseRef'}
-        />
-        <Stack.Screen
-          name="DashBoard"
-          component={DashBoardScreen}
-          options={{title: 'DashBoardScreen'}}
-          // title={'DashBoardScreen'}
         />
 
         <Stack.Screen
