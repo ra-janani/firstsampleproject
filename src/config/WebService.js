@@ -4,6 +4,8 @@ export const kApiUrlEndPoint="http://localhost:3000/api";
 export const kApiTodos="/todos";
 export const kApiUserSignup="/Users";
 export const kApiUserLogin="/Users/login";
+export const kApiPostItems="/items";
+export const kApiGetItems="/items"; 
 
 
 export const ERROR_NETWORK_NOT_AVAILABLE={

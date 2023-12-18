@@ -23,6 +23,7 @@ import {
   TestReduxClass,
   TypeScriptScreen,
   SignupScreen,
+  ItemsCRUD,
 } from '../containers';
 import {logout} from '../features/user/userSlice';
 
@@ -50,9 +51,24 @@ const HomeScreen = props => {
 
 const Navigator = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+  const user = useSelector(state => state.user);
+  //const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // if (user?.data?.id) {
+    //   setIsUserLoggedIn(true);
+    // } else {
+    //   setIsUserLoggedIn(false);
+    // }
+
+    // setIsUserLoggedIn(
+    //   user?.data?.accessToken &&
+    //     user?.data?.accessToken === 'String' &&
+    //     user?.data?.accessToken.length > 50
+    //     ? true
+    //     : false,
+    // );
+  }, [user]);
 
   // useEffect(() => {
   //   // Use the Redux state to update isUserLoggedIn
@@ -88,9 +104,9 @@ const Navigator = () => {
   //     });
   // }, []);
 
-  //const [isUserLoggedIn, setIsUserLoggedIn] = useState(isAuthenticated);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(user?.data?.id);
+  //const [isUserLoggedIn, setIsUserLoggedIn] = useState(user?.data?.id);
   const navigation = useNavigation();
   const getAuthStack = () => {
     return (
@@ -110,6 +126,12 @@ const Navigator = () => {
   const getMainStack = () => {
     return (
       <Stack.Group>
+         <Stack.Screen
+          name="itemsCRUD"
+          component={ItemsCRUD}
+          options={{title: 'Items CRUD'}}
+          // title={'DashBoardScreen'}
+        />
         <Stack.Screen
           name="TypescriptScreen"
           component={TypeScriptScreen}

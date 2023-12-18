@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from "./features/counter/counterSlice";
 import cartReducer from "./features/cart/cartSlice";
 import userReducer from "./features/user/userSlice";
+import itemReducer from "./features/item/itemSlicer";
 import {createLogger} from 'redux-logger';
 
 const isDebuggingInChrome=__DEV__&& !!window.navigator.userAgent;
@@ -19,6 +20,7 @@ export default configureStore({
     counter:counterReducer,
     cart:cartReducer,
     user:userReducer,
+    item:itemReducer,
   },
   middleware:getDefaultMiddleware=>getDefaultMiddleware().concat(logger),
 }) 
