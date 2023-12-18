@@ -1,7 +1,10 @@
 import {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {login, logout} from '../../features/user/userSlice';
+import {request, success, failure} from '../../features/user/userSlice';
+import {ApiHelper} from '../../helpers';
+import {kApiUserLogin} from '../../config/WebService';
+//import {login, logout} from '../../features/user/userSlice';
 
 //import {PersistanceHelper} from '../../helpers';
 //import { EventRegister } from 'react-native-event-listeners';
@@ -10,7 +13,9 @@ const LoginScreen = () => {
   const isAuthenticated = useSelector(state => state.user.isAuthenticated);
   const user = useSelector(state => state.user.user);
 
-  const [username, setUserName] = useState('');
+  //const [username, setUserName] = useState('');
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
@@ -26,7 +31,7 @@ const LoginScreen = () => {
         </View>
       ) : (
         <View>
-          <Text>UserName</Text>
+          <Text>Email</Text>
           <TextInput
             style={{
               backgroundColor: 'white',
@@ -35,9 +40,9 @@ const LoginScreen = () => {
               borderWidth: 1,
               borderColor: 'black',
             }}
-            value={username}
+            value={email}
             onChangeText={ct => {
-              setUserName(ct);
+              setEmail(ct);
             }}
             placeholder={'enter the username'}
           />
@@ -61,11 +66,22 @@ const LoginScreen = () => {
 
           <Button
             title={'Login'}
-            onPress={() => {
-              dispatch(login({username, password}));
+            onPress={async () => {
+              //dispatch(login({username, password}));
+              dispatch(request({email, password}));
+              try {
+                const response = await ApiHelper.post(kApiUserLogin, {
+                  email,
+                  password,
+                });
+                dispatch(success(response));
+              } catch (error) {
+                dispatch(failure(error));
+              }
 
               // Clear the input fields
-              setUserName('');
+              //setUserName('');
+              setEmail('');
               setPassword('');
               // PersistanceHelper.setObject('loginDetails', {username, password});
               // setUserName('');

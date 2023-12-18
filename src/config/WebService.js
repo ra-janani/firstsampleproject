@@ -1,5 +1,10 @@
-export const kApiUrlEndPoint="https://jsonplaceholder.typicode.com";
+//export const kApiUrlEndPoint="https://jsonplaceholder.typicode.com";
+export const kApiUrlEndPoint="http://localhost:3000/api";
+
 export const kApiTodos="/todos";
+export const kApiUserSignup="/Users";
+export const kApiUserLogin="/Users/login";
+
 
 export const ERROR_NETWORK_NOT_AVAILABLE={
     title:'Oops!',

@@ -13,11 +13,28 @@ class ApiHelper {
       this.handlePromise(resolve, reject, response);
     });
   };
-  post = () => {};
+  post = async (url,data,headers={}) => {
+    url = kApiUrlEndPoint + url;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',       
+        ...headers, 
+      },
+      body: JSON.stringify(data),
+    }).then(() => {
+      x => x.json();
+    });
+
+    return new Promise((resolve, reject) => {
+      this.handlePromise(resolve, reject, response);
+    });
+  };
   put = () => {};
   delete = () => {};
 
-  handlePromise = (resolve, reject, response) => {  
+  handlePromise = (resolve, reject, response) => {
     if (response.error) {
       if (response.error.code === 'LOGIN_FAILED') {
         reject(ERROR_WRONG_CREDENTIALS);

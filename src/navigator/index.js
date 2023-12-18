@@ -21,7 +21,8 @@ import {
   TestReduxScreen,
   CartScreen,
   TestReduxClass,
-  TypeScriptScreen
+  TypeScriptScreen,
+  SignupScreen,
 } from '../containers';
 import {logout} from '../features/user/userSlice';
 
@@ -51,23 +52,25 @@ const Navigator = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
-  useEffect(() => {
-    // Use the Redux state to update isUserLoggedIn
-    setIsUserLoggedIn(isAuthenticated);
+  useEffect(() => {}, []);
 
-    // You can continue using your existing persistence logic if needed
+  // useEffect(() => {
+  //   // Use the Redux state to update isUserLoggedIn
+  //   setIsUserLoggedIn(isAuthenticated);
 
-    PersistanceHelper.getObject('loginDetails')
-      .then(data => {
-        if (data.username && data.password) {
-          // Dispatch login action if user details are present
-          dispatch(login(data));
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, [dispatch, isAuthenticated]);
+  //   // You can continue using your existing persistence logic if needed
+
+  //   PersistanceHelper.getObject('loginDetails')
+  //     .then(data => {
+  //       if (data.username && data.password) {
+  //         // Dispatch login action if user details are present
+  //         dispatch(login(data));
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }, [dispatch, isAuthenticated]);
   // useEffect(() => {
   //   EventRegister.addEventListener('loginEvent', data => {
   //     setIsUserLoggedIn(data);
@@ -85,20 +88,16 @@ const Navigator = () => {
   //     });
   // }, []);
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(isAuthenticated);
+  //const [isUserLoggedIn, setIsUserLoggedIn] = useState(isAuthenticated);
+
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(user?.data?.id);
   const navigation = useNavigation();
   const getAuthStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen
-          name="Sign up"
-          component={() => (
-            <View>
-              <Text>SignUp screen</Text>
-            </View>
-          )}
-        />
+
         <Stack.Screen
           name={'TestContext'}
           component={TestContext}
