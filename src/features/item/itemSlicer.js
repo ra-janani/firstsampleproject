@@ -11,16 +11,26 @@ const itemSlice = createSlice({
     },
     success: (state, action) => {
       state.isFetching = false;
-      state.items=action.payload;
-      state.failure=false;
-      state.errorMessage='';    
+
+      if (Array.isArray(action.payload)) {
+        state.items = action.payload;
+      } else {
+        state.items = [...state.items, action.payload];
+      }
+
+      state.items = action.payload;
+      state.failure = false;
+      state.errorMessage = '';
     },
     failure: (state, action) => {
       state.isFetching = false;
-      state.errorMessage=action.payload;
-      state.failure=true;
+      state.errorMessage = action.payload;
+      state.failure = true;
     },
-    addItem: (state, action) => {},
+    addItem: (state, action) => {
+      const itemToAdd=action.payload;
+      state.items.push(itemToAdd);
+    },
   },
 });
 

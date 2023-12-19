@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {itemActions} from '../../features/item/itemSlicer';
 import {kApiGetItems} from '../../config/WebService';
 import ApiHelper from '../../helpers/ApiHelper';
+import PostItemsForm from '../../controls/PostItemsForm';
 
 const {request, success, failure} = itemActions;
 export default function ItemsCRUD() {
@@ -20,7 +21,7 @@ export default function ItemsCRUD() {
       });
   }, []);
   return (
-    <View>
+    <View style={{flex:1}}> 
       <FlatList 
         data={item.items}
         renderItem={({item, index}) => {
@@ -34,6 +35,7 @@ export default function ItemsCRUD() {
           );
         }}
       />
+      <PostItemsForm/>
     </View>
   );
 }
